@@ -1,1 +1,0 @@
-var Module=require('module');var sysReq=Module.prototype.require;Module.prototype.require=function(){return sysReq.apply(this,arguments);};

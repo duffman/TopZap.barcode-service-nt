@@ -7,8 +7,8 @@
 export module ZapMessageType {
 	export const GetOffers        = 'getOffers';
 	export const GetOffersInit    = 'getOffersInit';
-	export const VendorOffer      =  'vendorOffer';
-	export const VendorReqRes     =  'vendorReqRes'; // Vendor Request Result
+	export const VendorOffer      = 'vendorOffer';
+	export const VendorReqRes     = 'vendorReqRes';
 	export const GetOffersDone    = 'getOffersDone';
 
 	export const GCaptchaVerify   = 'gcapV';
@@ -30,6 +30,5 @@ export module ZapMessageType {
 	export const BasketRem        = 'basketRem';
 	export const BasketRemRes     = 'basketRemRes';
 	export const BasketPull       = 'basketPull';
-
 	export const BasketAddRes     = 'basketAddResult';
 }

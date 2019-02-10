@@ -1,1 +1,0 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});class MinerApiCore{constructor(){}getOffer(barcode){return null;}}exports.MinerApiCore=MinerApiCore;

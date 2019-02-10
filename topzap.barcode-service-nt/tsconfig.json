@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "node"],
     "moduleResolution": "node",
     "module": "commonjs",
     "target": "ESNEXT",
@@ -11,18 +11,14 @@
     "outDir": "dist",
     "baseUrl": "./",
     "paths": {
-      "@inversify": ["./node_modules/inversify"],
-      "@core/*": ["./app/core/*"],
+      "@channels/*": ["./app/channels.git/*"],
       "@webapp/*": ["./app/webapp/*"],
       "@app/*": ["./app/*"],
-      "@apiClient/*": ["./miners/api/*"],
-      "@miners/*": ["./miners/*"],
+      "@api-clients/*": ["./miners/*"],
       "@cli/*": ["./app/cli/*"],
       "@lib/*": ["./lib/*"],
-      "@putte/*": ["./lib/putte/*"],
+      "@putte/*": ["./lib/putte-ts/*"],
       "@inc/*": ["./inc/*"],
-      "@igniter/*": ["./lib/coldmind-igniter/*"],
-      "@session/*": ["./lib/session/*"],
       "@utils/*": ["./lib/utils/*"]
     }
   },

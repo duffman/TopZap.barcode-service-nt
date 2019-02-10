@@ -4,30 +4,13 @@
  * Proprietary and confidential
  */
 
-import { Application } from "@app/app";
-import { Logger } from "@cli/logger";
+import { Application }            from "@app/app";
+import { Logger }                 from "@cli/logger";
+import { CliCommander }           from "@cli/cli-commander";
 
-// FOR DEBUGGING PURPOSES ONLY //
-import { WbgAppApi } from "@apiClient/wbg-api-client";
-import {CliCommander} from "@cli/cli-commander";
-
-////////////////////////////////
-
-
-let debug = false;
-
-if (!debug) {
-	Logger.logGreen("NORMAL MODE");
-	let app = new Application(debug);
-
+if (!CliCommander.haveArgs()) {
+	Logger.logFatalError("No Miner Client API Specified");
 } else {
-	Logger.logYellow("DEBUG MODE");
-
-	let cp = new WbgAppApi();
-	cp.getOffer("819338020068").then((res) => {
-		console.log("YEAH", res);
-
-	}).catch(err => {
-		console.log("FUCK YOU", err);
-	});
+	let param = CliCommander.first();
+	let app = new Application(true, param);
 }

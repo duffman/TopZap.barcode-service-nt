@@ -4,9 +4,9 @@
  * Proprietary and confidential
  */
 
-import { PNumUtils }                from "@putte/pnum-utils";
 import { IVendorOfferResult }       from '@app/models/zap-ts-models/vendor-offer-result';
 import { IVendorOfferData }         from '@app/models/zap-ts-models/zap-offer.model';
+import { PNumUtils }                from '@putte/pnum-utils';
 
 export interface ICompiledOffersResult {
 	vendors: IVendorOfferData[];

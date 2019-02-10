@@ -4,64 +4,69 @@
  * Proprietary and confidential
  */
 
-import { WebApp }                 from "@webapp/webapp";
 import { Logger }                 from "@cli/logger";
 import { Constants }              from "@inc/constants";
-import { IZapApiClient }          from "@core/zap-miner-api";
 
-import { MomoxAppApi }            from "@miners/api/momox-api-client";
-import { WbgAppApi }              from "@miners/api/wbg-api-client";
-import { ZiffitAppApi }           from "@miners/api/ziffit-api-client";
-import { MmpAppApi }              from "@miners/api/mmp-api-client";
+/*
+import { MomoxAppApi }            from "@api-clients/momox/momox-api-client";
+import { WbgAppApi }              from "@api-clients/webuygames/wbg-api-client";
+import { ZiffitAppApi }           from "@api-clients/ziffit/ziffit-api-client";
+import { MmpAppApi }              from "@api-clients/musicmagpie/mmp-api-client";
+*/
+
+import { IChannel }               from '@channels/channel';
+import { Channel }                from '@channels/channel';
+import { IBidServiceChannel }     from '@app/services/bid-channel.service';
+import { ChannelNames }           from '@channels/channel-config';
+import { MessagePipes}            from '@channels/channel-config';
+import { IBidService }            from '@app/services/bid.service';
+import { BidService }             from '@app/services/bid.service';
+import { MomoxAppApi }            from '../api-clients/momox/momox-api-client';
+import {IVendorApiClient} from '@app/VendorApiClient';
+import {MmpAppApi} from '../api-clients/musicmagpie/mmp-api-client';
+import {ZiffitAppApi} from '../api-clients/ziffit/ziffit-api-client';
+import {WbgAppApi} from '../api-clients/webuygames/wbg-api-client';
 
 export class Application {
-	webApp: WebApp;
-	zapMiners: IZapApiClient[];
+	serviceChannel: IChannel;
+	bidService: IBidService;
+	bidChannel: IBidServiceChannel;
 
-	constructor(public debug: boolean = false) {
+	constructor(public debug: boolean = false, apiClientVendor: string) {
 		Logger.logGreen("Starting up...");
-		this.webApp = new WebApp();
-		this.zapMiners = new Array<IZapApiClient>();
 		Logger.logPurple(Constants.APP_NAME);
 
-		if (this.configure()) {
-			this.start();
-		}
-	}
 
-	public configure(): boolean {
-		Logger.logGreen("App configure...");
-		//
-		// Create Api Managers
-		// TODO: We should really investigate using inversify for this
-		//
-		try {
-			let wbgMiner = new WbgAppApi();
-			let momoxMiner = new MomoxAppApi(true);
-			let ziffitMiner = new ZiffitAppApi();
-			let magpieMiner = new MmpAppApi();
-
-			this.zapMiners.push(ziffitMiner);
-			this.zapMiners.push(momoxMiner);
-			this.zapMiners.push(magpieMiner);
-			this.zapMiners.push(wbgMiner);
-
-			for (let index in this.zapMiners) {
-				let miner = this.zapMiners[index];
-				Logger.logGreen("Registered Miner ::", miner.name);
-			}
-
-		} catch (err) {
-			Logger.logError("Error Initializing Miners ::", err);
-			return false;
+		switch (apiClientVendor) {
+			case "momox":
+				this.bidService = new BidService(new MomoxAppApi());
+				break;
+			case "mmp":
+				this.bidService = new BidService(new MmpAppApi());
+				break;
+			case "ziffit":
+				this.bidService = new BidService(new ZiffitAppApi());
+				break;
+			case "wbg":
+				this.bidService = new BidService(new WbgAppApi());
+				break;
 		}
 
-		this.webApp.setApiClients(this.zapMiners);
+		if (this.bidService === null) {
+			Logger.logError("Could not load Miner API Client for ::", apiClientVendor);
+			process.exit(220);
+		}
 
-		return true;
-	}
+		//this.bidChannel = new BidChannelService(this.bidService);
 
-	public start(): void {
-		this.webApp.start(this.debug);
+		this.serviceChannel = new Channel(ChannelNames.Service, MessagePipes.Service);
+
+		this.serviceChannel.onChannelOpen((data) => {
+			console.log("Service Channel OPEN ::", data);
+		});
+
+		this.serviceChannel.onChannelData((data) => {
+			console.log("Service Channel DATA ::", data);
+		});
 	}
 }

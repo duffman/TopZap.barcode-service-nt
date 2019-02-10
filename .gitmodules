@@ -1,0 +1,9 @@
+[submodule "topzap.barcode-service-nt/lib/putte-db"]
+	path = topzap.barcode-service-nt/lib/putte-db
+	url = https://github.com/duffman/ts-putte-db.git
+[submodule "topzap.barcode-service-nt/app/channels.git"]
+	path = topzap.barcode-service-nt/app/channels.git
+	url = https://github.com/duffman/topzap.channel-core.git
+[submodule "topzap.barcode-service-nt/lib/putte-ts"]
+	path = topzap.barcode-service-nt/lib/putte-ts
+	url = https://github.com/duffman/putte-tsnode-lib.git

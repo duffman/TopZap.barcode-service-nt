@@ -1,1 +1,0 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});class ServerError{static getServerError(){let resp='<html>\n';resp+='<body>';return resp;}}exports.ServerError=ServerError;
