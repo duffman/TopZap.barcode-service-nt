@@ -1,0 +1,1 @@
+'use strict';Object.defineProperty(exports,'__esModule',{value:true});class SessionBasket{constructor(productData=null,data=new Array()){this.productData=productData;this.data=data;}}exports.SessionBasket=SessionBasket;
