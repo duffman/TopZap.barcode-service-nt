@@ -1,0 +1,1 @@
+'use strict';Object.defineProperty(exports,'__esModule',{value:true});class PVarUtils{static isNothing(value){return value?true:false;}}exports.PVarUtils=PVarUtils;

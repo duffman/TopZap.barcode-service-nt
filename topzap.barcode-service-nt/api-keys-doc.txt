@@ -1,0 +1,48 @@
+Documentation for extracting API keys
+
+
+1. To Extract API keys first you have to download latest version of the app in APK format:
+
+https://apkpure.com/ziffit-com/uk.co.brightec.ziffit
+
+https://apkpure.com/musicmagpie/uk.co.musicMagpie
+
+https://apkpure.com/momox-sell-books-cd-s-dvd-s-games/uk.momox
+
+https://apkpure.com/webuygames-sell-items-for-cash/com.we.buy.games
+
+
+
+2. Decompile APK files, easiest is to use online APK decompiler:
+
+http://www.javadecompilers.com/apk
+
+
+
+3. When you have zip archive with decompiled source code, extract it, look into following classes to see all of API details including API Keys:
+
+---------------------------------------------
+- Ziffit:
+
+./co/brightec/ziffit/data/HttpRequest.java
+
+---------------------------------------------
+- Momox service details are included here:
+./src/de/momox/data/remote/ServiceGenerator.java
+
+---------------------------------------------
+- All WeBuyGames API details are in this class
+
+./src/com/we/buy/games/api/Api.java
+
+---------------------------------------------
+- MusicMagpie
+
+Request models are located here:
+./src/uk/co/musicMagpie/model/token/request/
+./src/uk/co/musicMagpie/model/valuation/request/
+
+request methods are located in Data Manager class:
+./src/uk/co/musicMagpie/data/DataManager.java
+
+---------------------------------------------

@@ -1,0 +1,40 @@
+{
+  "name": "topzap.price-service-api",
+  "version": "1.5.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "brun": "tspath --force --preproc=\"tsc\" && npm start",
+    "start": "node ./dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.12.15",
+    "bluebird": "^3.5.1",
+    "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie": "^0.3.1",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.13",
+    "querystring": "^0.2.0",
+    "reflect-metadata": "^0.1.12",
+    "request": "^2.87.0",
+    "simplediff": "^0.1.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "striptags": "^3.1.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.20",
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.3.1",
+    "@types/mongodb": "^3.1.14",
+    "@types/socket.io": "^2.1.2",
+    "@types/socket.io-client": "^1.4.32"
+  }
+}

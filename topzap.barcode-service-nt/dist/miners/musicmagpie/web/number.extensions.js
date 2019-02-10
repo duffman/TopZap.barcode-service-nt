@@ -1,0 +1,1 @@
+Number.prototype.pad=function(length){var s=String(this);while(s.length<(length||2)){s='0'+s;}return s;};

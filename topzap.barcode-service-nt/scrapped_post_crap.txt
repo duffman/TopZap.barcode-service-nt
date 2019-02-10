@@ -1,0 +1,73 @@
+
+		//this.webRoutes.get('/code/:code', this.doSearch.bind(this));
+
+
+	/*
+	private returnEmptyRequest(req: Request, resp: Response) {
+		resp.header("X-PoweredBy:", "ZapStorm/1.6.2");
+		resp.writeHead(501, {"Content-Type": 'text/plain'});
+		resp.write("Internal Error, deep deep somewhere in there...");
+		//throw new Error("Internal Error"); // Express will catch this on its own.
+	}
+
+	public doSearch(req: Request, resp: Response) {
+		console.log("SATABS FITT_METODEN POJpfdvpojsdf");
+		try {
+			let barcode = req.params.code || req.body.code;
+
+			if (PStrUtils.isEmpty(barcode)) {
+				resp.send(`error`);
+				resp.end();
+			}
+
+			this.priceController.runMiners(barcode).then((result) => {
+				console.log("priceController.doZapBacodeZearch :: SUCCESS ::", result);
+				resp.json(result);
+				resp.end();
+
+			}).catch((err) => {
+				console.log("priceController.doZapBacodeZearch :: FAIL ::", err);
+				ControllerUtils.internalError(resp);
+			});
+
+		} catch(err) {
+			console.log("FET FET FET ERROR :::", err);
+			//resp.send("ERROR");
+		}
+	}
+*/
+
+
+		/*this.webRoutes.get('/:barcode', (req: Request, resp: Response) => {
+			try {
+				// Extract the name from the request parameters
+				console.log("", req.params.barcode);
+				console.log("", req.body);
+				let barcode = req.params.barcode;
+
+				if (PStrUtils.isEmpty(barcode)) {
+					resp.send(`error`);
+					resp.end();
+				}
+
+				let lastMiner: string = "None";
+				try {
+					scope.apiClients.map(miner => {
+						lastMiner = miner.name;
+						console.log("Calling miner!!!");
+						miner.getOffer(barcode).then((res: IZapVendorResult) => {
+							resp.send(`Result offer :: ${res.offer}`);
+						});
+					});
+				} catch(err) {
+					console.log(`Miner ${lastMiner} failed ::`, err);
+					resp.send("ERROR");
+				}
+
+
+			} catch(err) {
+				console.log("FET FET FET ERROR :::", err);
+				resp.send("ERROR");
+			}
+
+		});*/

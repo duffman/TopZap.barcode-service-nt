@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "types": ["reflect-metadata"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "ESNEXT",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist",
+    "baseUrl": "./",
+    "paths": {
+      "@inversify": ["./node_modules/inversify"],
+      "@core/*": ["./app/core/*"],
+      "@webapp/*": ["./app/webapp/*"],
+      "@app/*": ["./app/*"],
+      "@apiClient/*": ["./miners/api/*"],
+      "@miners/*": ["./miners/*"],
+      "@cli/*": ["./app/cli/*"],
+      "@lib/*": ["./lib/*"],
+      "@putte/*": ["./lib/putte/*"],
+      "@inc/*": ["./inc/*"],
+      "@igniter/*": ["./lib/coldmind-igniter/*"],
+      "@session/*": ["./lib/session/*"],
+      "@utils/*": ["./lib/utils/*"]
+    }
+  },
+  "exclude": [
+    "dist",
+    "crap",
+    "node_modules"
+  ]
+}
