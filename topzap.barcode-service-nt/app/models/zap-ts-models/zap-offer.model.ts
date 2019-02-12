@@ -22,10 +22,10 @@ export interface IVendorOfferData {
 export class VendorOfferData implements IVendorOfferData {
 	public success: boolean;
 	public accepted: boolean;
-	public code: string;
 	public rawData: any = null;
 
-	constructor(public vendorId: number = -1,
+	constructor(public code: string,
+				public vendorId: number = -1,
 				public title: string = "",
 				public offer: string = "") {}
 }

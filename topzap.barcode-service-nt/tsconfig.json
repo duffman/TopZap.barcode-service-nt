@@ -14,7 +14,7 @@
       "@channels/*": ["./app/channels.git/*"],
       "@webapp/*": ["./app/webapp/*"],
       "@app/*": ["./app/*"],
-      "@api-clients/*": ["./miners/*"],
+      "@api-clients/*": ["./api-clients/*"],
       "@cli/*": ["./app/cli/*"],
       "@lib/*": ["./lib/*"],
       "@putte/*": ["./lib/putte-ts/*"],

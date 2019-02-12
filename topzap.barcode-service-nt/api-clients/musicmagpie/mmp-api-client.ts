@@ -31,7 +31,7 @@ export class MmpAppApi implements IVendorApiClient {
 		}
 
 		return new Promise((resolve, reject) => {
-			let zapResult = new VendorOfferData();
+			let zapResult = new VendorOfferData("");
 
 			this.worker.search(barcode).then((res) => {
 				console.log(`Miner '${scope.name}' Result ::`, res);

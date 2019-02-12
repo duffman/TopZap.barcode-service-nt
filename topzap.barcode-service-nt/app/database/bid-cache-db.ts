@@ -76,7 +76,7 @@ export class BidCacheDb implements IDbController {
 					let code = row.getValAsStr("code");
 					let title = row.getValAsStr("title");
 
-					let data = 	new VendorOfferData(vendorId, title, offer);
+					let data = 	new VendorOfferData(code, vendorId, title, offer);
 					data.accepted = true;
 					data.code = code;
 
