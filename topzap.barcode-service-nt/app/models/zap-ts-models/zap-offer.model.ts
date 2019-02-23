@@ -20,8 +20,8 @@ export interface IVendorOfferData {
 }
 
 export class VendorOfferData implements IVendorOfferData {
-	public success: boolean;
-	public accepted: boolean;
+	public success: boolean = true;
+	public accepted: boolean = true;
 	public rawData: any = null;
 
 	constructor(public code: string,

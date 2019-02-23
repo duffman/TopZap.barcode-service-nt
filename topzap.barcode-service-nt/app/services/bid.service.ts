@@ -115,10 +115,11 @@ export class BidService implements IBidService{
 				//this.bidsChannel.emitMessage(messData, MessagePipes.NewBid);
 				//this.sendChannel.emitMessage(messData, MessagePipes.NewBid);
 
+				console.log("Emitting message ::", JSON.stringify(messData));
+
 				this.drone.publish(
 					{room: MessagePipes.NewBid, message: messData }
 				);
-
 
 			}).catch(err => {
 				Logger.logFatalError("getVendorBid ::", err);
@@ -133,11 +134,12 @@ export class BidService implements IBidService{
 		let result: IVendorOfferData = null; //new VendorOfferData();
 
 		return new Promise((resolve, reject) => {
-			let data = new VendorOfferData("0887195000424", 13, "88 Heroes: 98 Heroes Edition - Nintendo Switch");
+			/*let data = new VendorOfferData("0887195000424", 13, "88 Heroes: 98 Heroes Edition - Nintendo Switch");
 			data.accepted = true;
 			data.offer = "0.34";
 			resolve(data);
-			/*
+			*/
+
 			this.apiClient.getOffer(code).then((res) => {
 				if (res.offer !== null) {
 					let offerNum = scope.formatOffer(res.offer);
@@ -154,7 +156,6 @@ export class BidService implements IBidService{
 				console.log("getOffer :: ERR", err);
 				reject(err);
 			});
-			*/
 		});
 	}
 }
