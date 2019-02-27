@@ -8,42 +8,48 @@ import * as Scaledrone            from 'scaledrone-node';
 import { ChannelEvents }          from '@channels/channel-events';
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
 import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
-import { IVendorApiClient }       from '@app/VendorApiClient';
 import { IChannel }               from '@channels/channel';
-import { MessagePipes }           from '@channels/channel-config';
+import {ChannelIds, ChannelNames, MessagePipes} from '@channels/channel-config';
 import { PStrUtils }              from '@putte/pstr-utils';
 import { IChannelMessage }        from '@channels/channel-message';
 import { ChannelMessage }         from '@channels/channel-message';
 import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-message-types';
 import { Logger }                 from '@cli/logger';
+import { BidCacheDb }             from '@app/database/bid-cache-db';
+import { IVendorApiClient }       from '@app/vendor-api-client';
 
 export interface IBidService {
-	getVendorBid(code: string): Promise<IVendorOfferData>;
+	callVendorService(code: string): Promise<IVendorOfferData>;
 }
 
 export class BidService implements IBidService{
-	bidsChannel: IChannel;
-//	sendChannel: IChannel;
-
+	bidCacheDb: BidCacheDb;
 	drone: any;
 	channel: any;
+	serviceDrone: any;
+	bidsChannel: IChannel;
 
 	constructor(public apiClient: IVendorApiClient) {
 		/*
 		this.bidsChannel = new Channel(ChannelNames.Bids, MessagePipes.GetBid);
-
 		this.bidsChannel.onChannelData((data) => {
 			console.log("CHANNEL 2 :: bidsChannel ::", data);
-			this.onNewBid(data);
+			this.onGetBidRequest(data);
 		});
 		*/
+		this.bidCacheDb = new BidCacheDb();
 
-		this.drone = new Scaledrone("0RgtaE9UstNGjTmu");
+		console.log("Bid Channel ::", ChannelIds.Bids);
 
+		this.drone = new Scaledrone(ChannelIds.Bids);
 		this.channel = this.drone.subscribe(MessagePipes.GetBid);
 
+		this.drone.on("open", (err) => {
+			console.log("Drone OPEN");
+		});
+
 		this.channel.on(ChannelEvents.ChannelData, data => {
-			this.onNewBid(data);
+			this.onGetBidRequest(data);
 		});
 	}
 
@@ -77,69 +83,93 @@ export class BidService implements IBidService{
 		this.bidsChannel.emitMessage(mess, sessId);
 	}
 
-	public onNewBid(message: any): void {
+	public onGetBidRequest(message: any): void {
 		console.log("ON NEW BID ---->");
 		let channelMess = message as IChannelMessage;
-		let code: string = null;
-		let sessId: string = null;
+		let code: string = channelMess.data.code;
+		let sessId: string = channelMess.sessId;
 
-		try {
-			code = channelMess.data.code;
-			sessId = channelMess.sessId;
-
-			console.log("BidChannelService :: CODE ::", code);
-			console.log("BidChannelService :: SESSION ::", sessId);
-			//console.log("BidChannelService ::", message);
-
-		} catch(ex) {
-			code = null;
-		}
+		console.log("BidChannelService :: CODE ::", code);
+		console.log("BidChannelService :: SESSION ::", sessId);
 
 		if (PStrUtils.isEmpty(code) || PStrUtils.isEmpty(sessId)) {
-			let err = new Error("Code or SessionId is missing");
-			//message.data(err);
+			if (PStrUtils.isEmpty(code)) Logger.logError("onGetBidRequest :: CODE Missing ::", code);
+			if (PStrUtils.isEmpty(code)) Logger.logError("onGetBidRequest :: CODE Missing ::", code);
 
-		} else {
-			this.getVendorBid(code).then(bid => {
-				console.log("VENDOR BID ::", bid);
-
-				let messData = new ChannelMessage(ZapMessageType.VendorOffer, bid, sessId);
-				//this.bidsChannel.emitMessage(messData, MessagePipes.NewBid);
-				//let channel = new Channel(ChannelNames.Bids, MessagePipes.NewBid);
-				/*
-				channel.onChannelOpen(() => {
-					console.log("FUCK CHANNEL OPEN ::");
-				//	channel.emitMessage(messData, MessagePipes.NewBid);
-				});
-				*/
-				//this.bidsChannel.emitMessage(messData, MessagePipes.NewBid);
-				//this.sendChannel.emitMessage(messData, MessagePipes.NewBid);
-
-				console.log("Emitting message ::", JSON.stringify(messData));
-
-				this.drone.publish(
-					{room: MessagePipes.NewBid, message: messData }
-				);
-
-			}).catch(err => {
-				Logger.logFatalError("getVendorBid ::", err);
-			});
+			return;
 		}
+
+		this.executeRequest(code, sessId);
 	}
 
-	public getVendorBid(code: string): Promise<IVendorOfferData> {
-		console.log("getVendorBid ::", code);
+	public executeRequest(code: string, sessId: string): void {
+		let scope = this;
+
+		async function execute(): Promise<void> {
+			let cachedVendorOffer = await scope.bidCacheDb.getVendorOffer(code, scope.apiClient.vendorId, 10);
+
+			// Do we have chached results we are supposed to use?
+			if (cachedVendorOffer) {
+				console.log("Using cahed offer");
+				scope.emitChannelBid(code, sessId, cachedVendorOffer);
+			} else {
+				console.log("Using price service");
+				scope.doCallVendorService(code, sessId);
+			}
+		}
+
+		execute().then(res => {
+			// Execute done!
+		});
+	}
+
+	public doCallVendorService(code: string, sessId: string): void {
+		this.callVendorService(code).then((data: any) => {
+			console.log("doCallVendorService :: ", data);
+			this.emitChannelBid(code, sessId, data);
+
+			//
+			// Cache result
+			//
+			if (data && data.accepted) {
+				this.bidCacheDb.cacheOffer(data);
+			}
+
+		}).catch(err => {
+			Logger.logFatalError("callVendorService ::", err);
+		});
+	}
+
+	/**
+	 * Emit bid over pub/sub channel
+	 * @param {string} code
+	 * @param {string} sessId
+	 * @param {IVendorOfferResult} offer
+	 */
+	private emitChannelBid(code: string, sessId: string, data: IVendorOfferData): void {
+		let messData = new ChannelMessage(ZapMessageType.VendorOffer, data, sessId);
+		console.log("Emitting message ::", JSON.stringify(messData));
+
+		this.drone.on("open", (err) => {
+			this.drone.publish(
+				{room: MessagePipes.NewBid, message: messData }
+			);
+		});
+
+		/*
+		this.drone.publish(
+			{room: MessagePipes.NewBid, message: messData }
+		);
+		*/
+	}
+
+	public callVendorService(code: string): Promise<IVendorOfferData> {
+		console.log("callVendorService ::", code);
 
 		let scope = this;
-		let result: IVendorOfferData = null; //new VendorOfferData();
+		let result: IVendorOfferData = null;
 
 		return new Promise((resolve, reject) => {
-			/*let data = new VendorOfferData("0887195000424", 13, "88 Heroes: 98 Heroes Edition - Nintendo Switch");
-			data.accepted = true;
-			data.offer = "0.34";
-			resolve(data);
-			*/
-
 			this.apiClient.getOffer(code).then((res) => {
 				if (res.offer !== null) {
 					let offerNum = scope.formatOffer(res.offer);
@@ -158,4 +188,32 @@ export class BidService implements IBidService{
 			});
 		});
 	}
+
+	/*
+	public callVendorService(code: string): Promise<IVendorOfferData> {
+		console.log("callVendorService ::", code);
+
+		let scope = this;
+		let result: IVendorOfferData = null;
+
+		return new Promise((resolve, reject) => {
+			this.apiClient.getOffer(code).then((res) => {
+				if (res.offer !== null) {
+					let offerNum = scope.formatOffer(res.offer);
+					res.accepted = offerNum > -1;
+					res.offer = offerNum.toString();
+
+					// Append the code to the result
+					res.code = code;
+				}
+
+				resolve(res);
+
+			}).catch((err) => {
+				console.log("getOffer :: ERR", err);
+				reject(err);
+			});
+		});
+	}
+	*/
 }

@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-import { IVendorApiClient }       from '@app/VendorApiClient';
+import { IVendorApiClient }       from '@app/vendor-api-client';
 import { Logger }                 from "@cli/logger";
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
 import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
@@ -12,6 +12,7 @@ import { MmpAppWorker }           from './mmp-app-worker';
 import { Vendors }                from '../vendor-list';
 
 export class MmpAppApi implements IVendorApiClient {
+	vendorId = Vendors.MagpieApp;
 	name: string = "MagpieAppApi";
 	worker: MmpAppWorker;
 

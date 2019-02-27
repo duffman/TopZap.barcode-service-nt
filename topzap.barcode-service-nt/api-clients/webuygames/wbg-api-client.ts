@@ -4,14 +4,15 @@
  * Proprietary and confidential
  */
 
-import { IVendorApiClient }       from '@app/VendorApiClient';
-import { VendorOfferResult }      from "@app/models/zap-ts-models/vendor-offer-result";
-import { Logger }                 from "@cli/logger";
+import { IVendorApiClient }       from '@app/vendor-api-client';
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
+import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
+import { Logger }                 from "@cli/logger";
 import { WbgAppWorker }           from './wbg-app-worker';
 import { Vendors }                from '../vendor-list';
 
 export class WbgAppApi implements IVendorApiClient {
+	vendorId = Vendors.WeBuyGamesApp;
 	name: string = "WeBuyGamesAppApi";
 	worker: WbgAppWorker;
 
@@ -21,7 +22,7 @@ export class WbgAppApi implements IVendorApiClient {
 
 	public getOffer(barcode: string): Promise<IVendorOfferData> {
 		let scope = this;
-		let zapResult = new VendorOfferResult();
+		let zapResult = new VendorOfferData();
 		zapResult.vendorId = Vendors.WeBuyGamesApp;
 
 		let error: Error = null;

@@ -5,14 +5,15 @@
  */
 
 import * as request               from "request";
-import { IVendorApiClient }       from '@app/VendorApiClient';
-import { VendorOfferResult }      from "@app/models/zap-ts-models/vendor-offer-result";
-import { Logger }                 from "@cli/logger";
+import { IVendorApiClient }       from '@app/vendor-api-client';
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
+import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
+import { Logger }                 from "@cli/logger";
 import { ZiffitAppWorker }        from './ziffit-app-worker';
 import { Vendors }                from '../vendor-list';
 
 export class ZiffitAppApi implements IVendorApiClient {
+	vendorId = Vendors.ZiffitApp;
 	name: string = "ZiffitAppApi";
 	worker: ZiffitAppWorker;
 
@@ -25,7 +26,7 @@ export class ZiffitAppApi implements IVendorApiClient {
 
 		return new Promise((resolve, reject) => {
 			let jar = request.jar();
-			let zapResult = new VendorOfferResult();
+			let zapResult = new VendorOfferData();
 			zapResult.vendorId = Vendors.ZiffitApp;
 
 			this.worker.search(barcode).then((dataRes) => {

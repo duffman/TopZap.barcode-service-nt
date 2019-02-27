@@ -14,13 +14,14 @@ import { Settings }               from '@app/settings';
 // This made total sense while I was drunk, remove this entire class if it ever yields an error...
 export class BidCacheDb implements IDbController {
 	db: DbManager;
+	tableName: string = "cached_vendor_offers";
 
 	constructor() {
 		this.db = new DbManager();
 	}
 
-	public cacheOffer(data: IVendorOfferData): void {
-		let sql = `INSERT INTO cached_offers (
+	public cacheOffer(data: IVendorOfferData): Promise<void> {
+		let sql = `INSERT INTO ${this.tableName} (
 					id,
 					code,
 					vendor_id,
@@ -38,52 +39,58 @@ export class BidCacheDb implements IDbController {
 
 		console.log("SQL ::", sql);
 
-		this.db.dbQuery(sql).then(res => {
-			// This is a fire and forget thing, I really had to write that, you SHALL NOT leave a class without comments
-			// and you shall NOT leave your mastercard in the card machine at your local pub!!!
-			console.log("cacheOffer :: affectedRows ::", res.affectedRows)
-		}).catch(err => {
-			 Logger.logError("BidCacheDb :: cacheOffer :: err ::", err);
+		return new Promise((resolve, reject) => {
+			return this.db.dbQuery(sql).then(res => {
+				// This is a fire and forget thing, I really had to write that, you SHALL NOT leave a class without comments
+				// and you shall NOT leave your mastercard in the card machine at your local pub!!!
+				console.log("cacheOffer :: affectedRows ::", res.affectedRows)
+				resolve();
+			}).catch(err => {
+				Logger.logError("BidCacheDb :: cacheOffer :: err ::", err);
+				reject(err);
+			});
 		});
 	}
 
-	public getCachedOffers(code: string): Promise<IVendorOfferData[]> {
+	public getVendorOffer(code: string, vendorId: number, ttl: number = Settings.Caching.CacheTTL): Promise<IVendorOfferData> {
 		console.log("########### doGetOffers :: >> getCachedOffers");
 
 		//code='${code}'
 		let sql = `
-			SELECT
+			SELECT DISTINCT
 				*
 			FROM
-				cached_offers
+				${this.tableName}
 			WHERE
 				code='${code}'
 				AND
-				cached_offers.cached_time > NOW() - INTERVAL ${Settings.Caching.CacheTTL} MINUTE
+				vendor_id='${vendorId}'
+				AND
+				${this.tableName}.cached_time > NOW() - INTERVAL ${ttl} MINUTE
 		`;
+
+		console.log("SQL ::", sql);
 
 		return new Promise((resolve, reject) => {
 			return this.db.dbQuery(sql).then(res => {
-				let result: IVendorOfferData[] = null;
+				let data: VendorOfferData = null;
 
 				if (res.haveAny()) {
-					result = new Array<IVendorOfferData>();
-				}
+					let row = res.safeGetFirstRow();
 
-				for (let row of res.result.dataRows) {
+					console.log("row ::", row);
+
 					let vendorId = row.getValAsNum("vendor_id");
 					let offer = row.getValAsStr("offer");
 					let code = row.getValAsStr("code");
 					let title = row.getValAsStr("title");
 
-					let data = 	new VendorOfferData(code, vendorId, title, offer);
+					data = 	new VendorOfferData(code, vendorId, title, offer);
 					data.accepted = true;
 					data.code = code;
-
-					result.push(data); // result is a male and the data is a feminist, so it will never resolve
 				}
 
-				resolve(result);
+				resolve(data);
 
 			}).catch(err => {
 				reject(err);

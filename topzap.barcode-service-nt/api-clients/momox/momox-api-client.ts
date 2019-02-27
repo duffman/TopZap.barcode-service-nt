@@ -4,15 +4,16 @@
  * Proprietary and confidential
  */
 
-import { IVendorApiClient }       from '@app/VendorApiClient';
+import { IVendorApiClient }       from '@app/vendor-api-client';
 import * as request               from "request";
 import { MomoxMobileWorker}       from "./momox-app-worker";
-import { IVendorOfferResult }     from "@app/models/zap-ts-models/vendor-offer-result";
-import { VendorOfferResult }      from "@app/models/zap-ts-models/vendor-offer-result";
+import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
+import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
+import { Vendors }                from '../vendor-list';
 import { Logger }                 from "@cli/logger";
-import {Vendors} from '../vendor-list';
 
 export class MomoxAppApi implements IVendorApiClient {
+	vendorId = Vendors.MomoxApp;
 	name: string = "MomoxAppApi";
 	worker: MomoxMobileWorker;
 
@@ -20,12 +21,12 @@ export class MomoxAppApi implements IVendorApiClient {
 		this.worker = new MomoxMobileWorker(debugMode);
 	}
 
-	public getOffer(barcode: string): Promise<VendorOfferResult> {
+	public getOffer(barcode: string): Promise<IVendorOfferData> {
 		let scope = this;
 
 		return new Promise((resolve, reject) => {
 			let jar = request.jar();
-			let zapResult = new VendorOfferResult();
+			let zapResult = new VendorOfferData();
 
 			this.worker.search(barcode).then((dataRes) => {
 				console.log(`Miner '${scope.name}' Result ::`, dataRes);
@@ -36,6 +37,8 @@ export class MomoxAppApi implements IVendorApiClient {
 					zapResult.success = true;
 					zapResult.title = dataRes.title;
 					zapResult.offer = dataRes.price;
+				} else {
+					zapResult.accepted = false;
 				}
 
 				resolve(zapResult);

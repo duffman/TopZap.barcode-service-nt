@@ -4,6 +4,7 @@
  * Proprietary and confidential
  */
 
+import * as Scaledrone            from 'scaledrone-node';
 import { Logger }                 from "@cli/logger";
 import { Constants }              from "@inc/constants";
 import { IChannel }               from '@channels/channel';
@@ -16,6 +17,7 @@ import { MomoxAppApi }            from '@api-clients/momox/momox-api-client';
 import { MmpAppApi }              from '@api-clients/musicmagpie/mmp-api-client';
 import { ZiffitAppApi }           from '@api-clients/ziffit/ziffit-api-client';
 import { WbgAppApi }              from '@api-clients/webuygames/wbg-api-client';
+import { ChannelEvents }          from '@channels/channel-events';
 
 export class Application {
 	serviceChannel: IChannel;
@@ -24,6 +26,8 @@ export class Application {
 	constructor(public debug: boolean = false, apiClientVendor: string) {
 		Logger.logGreen("Starting up...");
 		Logger.logPurple(Constants.APP_NAME);
+
+		this.doIt();
 
 		switch (apiClientVendor) {
 			case "momox":
@@ -54,5 +58,31 @@ export class Application {
 		this.serviceChannel.onChannelData((data) => {
 			console.log("Service Channel DATA ::", data);
 		});
+	}
+
+	private doIt() {
+		//let serviceDrone = new Scaledrone("T4eUrfAVDy7ODb0h"); // Service Channel
+		let serviceDrone = new Scaledrone("T4eUrfAVDy7ODb0h"); // Service Channel
+		let serviceChannel = serviceDrone.subscribe("register");
+
+		let message = {
+			name: "kalle"
+		};
+
+		serviceChannel.on(ChannelEvents.ChannelOpen, error => {
+
+			if (error) {
+				Logger.logError("Error :: serviceChannel ::", error);
+				return;
+			}
+
+			console.log("Publishing register message ::", message);
+			serviceDrone.publish({room: "register", message: message});
+			serviceDrone.publish({room: MessagePipes.Service, message: message});
+
+			serviceDrone.publish({room: "register", message: {"kalle": "kula"}});
+			serviceDrone.publish({room: MessagePipes.Service, message: {"kalle": "kula"}});
+		});
+
 	}
 }

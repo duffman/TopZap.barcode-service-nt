@@ -111,6 +111,11 @@ export class MomoxMobileWorker {
 				} else {
 					let resultData: MomoxResult;
 					try {
+
+						//console.log("### err ::", err);
+						//console.log("### httpResponse ::", httpResponse);
+						console.log("### body ::", body);
+
 						resultData = Convert.toMomoxResult(body);
 						resolve(resultData);
 

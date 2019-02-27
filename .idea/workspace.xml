@@ -2,14 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a3a55eb-9bd4-4231-80e6-da4b61917263" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/service_1.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/service_2.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/service_3.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/service_4.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/test/bidtest.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/test/cache-test.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/test/test.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/compiled-offers-result.ts" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/VendorApiClient.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/vendor-api-client.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-db" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-app-worker.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-app-worker.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/musicmagpie/mmp-api-client.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/musicmagpie/mmp-api-client.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/webuygames/wbg-api-client.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/webuygames/wbg-api-client.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-api-client.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-api-client.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-app-worker.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-app-worker.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/database/bid-cache-db.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/database/bid-cache-db.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/vendor-offer-result.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/vendor-offer-result.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/momox/momox-api-client.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/momox/momox-api-client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/momox/momox-app-worker.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/momox/momox-app-worker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/musicmagpie/mmp-api-client.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/musicmagpie/mmp-api-client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/webuygames/wbg-api-client.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/webuygames/wbg-api-client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/ziffit/ziffit-api-client.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/api-clients/ziffit/ziffit-api-client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/app.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/channels.git/channel-config.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/channels.git/channel-config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/database/bid-cache-db.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/database/bid-cache-db.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/models/zap-ts-models/vendor-offer-result.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/models/zap-ts-models/vendor-offer-result.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/models/zap-ts-models/zap-offer.model.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/models/zap-ts-models/zap-offer.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid-channel.service.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid-channel.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid.service.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid.service.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,11 +47,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts">
+      <file leaf-file-name="bidtest.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/test/bidtest.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="21" />
+            <state relative-caret-position="622">
+              <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#203#260#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vendor-offer-result.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/vendor-offer-result.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bid.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="131" column="27" lean-forward="false" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
+              <folding>
+                <element signature="e#203#260#0" expanded="true" />
+                <element signature="e#1411#1627#0" expanded="false" />
+                <element signature="n#!!block;n#formatOffer#0;n#BidService#0" expanded="false" />
+                <element signature="n#!!block;n#onGetBidRequest#0;n#BidService#0" expanded="false" />
+                <element signature="e#5592#6203#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="momox-api-client.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="momox-app-worker.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-app-worker.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="105" column="60" lean-forward="false" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -35,54 +108,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_1.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_1.ts">
+      <file leaf-file-name="bid-cache-db.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/database/bid-cache-db.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#203#240#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="202">
+              <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_2.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_2.ts">
+      <file leaf-file-name="settings.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/settings.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#203#240#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_3.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_3.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#203#240#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_4.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_4.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#203#240#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="84">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,39 +131,21 @@
       <file leaf-file-name="channel-config.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
-              <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            <state relative-caret-position="210">
+              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="channel-message.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-message.ts">
+      <file leaf-file-name="app.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zap-offer.model.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lib.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="13017" column="4" lean-forward="false" selection-start-line="13017" selection-start-column="4" selection-end-line="13017" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="223">
+              <caret line="33" column="46" lean-forward="false" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+              <folding>
+                <element signature="n#!!block;n#doIt#0;n#Application#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,8 +163,17 @@
     <findStrings>
       <find>subscribe(</find>
       <find>ChannelMessage</find>
+      <find>publish(</find>
+      <find>serviceDrone</find>
+      <find>publi</find>
+      <find>.subscribe</find>
+      <find>drone</find>
+      <find>onNewBid</find>
+      <find>callVendorService</find>
+      <find>doCallVendorService</find>
     </findStrings>
     <dirStrings>
+      <dir>C:\TopZap\TopZap.Software\Node\topzap.service-clients\topzap.barcode-service-nt</dir>
       <dir>C:\TopZap\TopZap.Software\Node\topzap.service-clients</dir>
     </dirStrings>
   </component>
@@ -151,13 +183,30 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts" />
-        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" />
         <option value="$PROJECT_DIR$/service_momox.ts" />
         <option value="$PROJECT_DIR$/topzap.barcode-service-nt/service_momox.ts" />
         <option value="$PROJECT_DIR$/topzap.barcode-service-nt/service_2.ts" />
         <option value="$PROJECT_DIR$/topzap.barcode-service-nt/service_3.ts" />
         <option value="$PROJECT_DIR$/topzap.barcode-service-nt/service_4.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/test.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/cache-test.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/bidtest.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-app-worker.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/VendorApiClient.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/test/cache-test.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-config.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/musicmagpie/mmp-api-client.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/webuygames/wbg-api-client.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-api-client.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/vendor-offer-result.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/models/compiled-offers-result.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/database/bid-cache-db.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-app-worker.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" />
+        <option value="$PROJECT_DIR$/topzap.barcode-service-nt/test/bidtest.ts" />
       </list>
     </option>
   </component>
@@ -171,10 +220,9 @@
     <handled-path value="$PROJECT_DIR$/topzap.barcode-service-nt/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2160" />
-    <option name="y" value="90" />
-    <option name="width" value="1510" />
-    <option name="height" value="830" />
+    <option name="x" value="39" />
+    <option name="width" value="1888" />
+    <option name="height" value="1037" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -209,7 +257,33 @@
               <item name="topzap.service-clients" type="b2602c69:ProjectViewProjectNode" />
               <item name="topzap.service-clients" type="462c0819:PsiDirectoryNode" />
               <item name="topzap.barcode-service-nt" type="462c0819:PsiDirectoryNode" />
+              <item name="api-clients" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="topzap.service-clients" type="b2602c69:ProjectViewProjectNode" />
+              <item name="topzap.service-clients" type="462c0819:PsiDirectoryNode" />
+              <item name="topzap.barcode-service-nt" type="462c0819:PsiDirectoryNode" />
+              <item name="api-clients" type="462c0819:PsiDirectoryNode" />
+              <item name="momox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="topzap.service-clients" type="b2602c69:ProjectViewProjectNode" />
+              <item name="topzap.service-clients" type="462c0819:PsiDirectoryNode" />
+              <item name="topzap.barcode-service-nt" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="topzap.service-clients" type="b2602c69:ProjectViewProjectNode" />
+              <item name="topzap.service-clients" type="462c0819:PsiDirectoryNode" />
+              <item name="topzap.barcode-service-nt" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="topzap.service-clients" type="b2602c69:ProjectViewProjectNode" />
+              <item name="topzap.service-clients" type="462c0819:PsiDirectoryNode" />
+              <item name="topzap.barcode-service-nt" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -227,6 +301,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\TopZap\TopZap.Software\Node\topzap.service-clients\topzap.barcode-service-nt\test" />
       <recent name="C:\TopZap\TopZap.Software\Node\topzap.service-clients\topzap.barcode-service-nt" />
     </key>
   </component>
@@ -252,22 +327,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550774632463</updated>
-      <workItem from="1550774633669" duration="7332000" />
+      <workItem from="1550774633669" duration="27697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7332000" />
+    <option name="totallyTimeSpent" value="27697000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2160" y="90" width="1510" height="830" extended-state="0" />
+    <frame x="39" y="0" width="1888" height="1037" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3098976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24660511" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -304,67 +379,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="13017" column="4" lean-forward="false" selection-start-line="13017" selection-start-column="4" selection-end-line="13017" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-message.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-config.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding>
-            <element signature="e#203#260#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_1.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#203#240#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -381,18 +395,8 @@
         <state relative-caret-position="189">
           <caret line="9" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#203#240#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#203#240#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -402,9 +406,17 @@
         <state relative-caret-position="294">
           <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#203#240#0" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#203#240#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -413,8 +425,230 @@
         <state relative-caret-position="294">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#203#240#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/service_1.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#203#240#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/test/test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="e#203#260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-app-data.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-app-worker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1344">
+          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/test/cache-test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="29" lean-forward="false" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding>
+            <element signature="e#203#259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/vendor-api-client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/vendor-list.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-message.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/settings.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git/channel-config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/zap-offer.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="33" column="46" lean-forward="false" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!block;n#doIt#0;n#Application#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/musicmagpie/mmp-api-client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding>
+            <element signature="e#203#267#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/webuygames/wbg-api-client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding>
+            <element signature="e#203#267#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/ziffit/ziffit-api-client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#203#252#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/compiled-offers-result.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/product-data-result.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/models/zap-ts-models/vendor-offer-result.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="1294" column="4" lean-forward="false" selection-start-line="1294" selection-start-column="4" selection-end-line="1294" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-app-worker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="105" column="60" lean-forward="false" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/database/bid-cache-db.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="131" column="27" lean-forward="false" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
+          <folding>
+            <element signature="e#203#260#0" expanded="true" />
+            <element signature="e#1411#1627#0" expanded="false" />
+            <element signature="n#!!block;n#formatOffer#0;n#BidService#0" expanded="false" />
+            <element signature="n#!!block;n#onGetBidRequest#0;n#BidService#0" expanded="false" />
+            <element signature="e#5592#6203#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/api-clients/momox/momox-api-client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topzap.barcode-service-nt/test/bidtest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#203#260#0" expanded="true" />
           </folding>
         </state>
       </provider>

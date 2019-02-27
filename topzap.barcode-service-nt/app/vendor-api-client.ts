@@ -7,6 +7,7 @@
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
 
 export interface IVendorApiClient {
+	vendorId: number;
 	name: string;
 	getOffer(barcode: string): Promise<IVendorOfferData>;
 }
