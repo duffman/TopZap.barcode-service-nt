@@ -37,7 +37,7 @@ export class BidCacheDb implements IDbController {
 					CURRENT_TIMESTAMP
 				)`;
 
-		console.log("SQL ::", sql);
+//		console.log("SQL ::", sql);
 
 		return new Promise((resolve, reject) => {
 			return this.db.dbQuery(sql).then(res => {
@@ -55,7 +55,6 @@ export class BidCacheDb implements IDbController {
 	public getVendorOffer(code: string, vendorId: number, ttl: number = Settings.Caching.CacheTTL): Promise<IVendorOfferData> {
 		console.log("########### doGetOffers :: >> getCachedOffers");
 
-		//code='${code}'
 		let sql = `
 			SELECT DISTINCT
 				*
@@ -69,7 +68,7 @@ export class BidCacheDb implements IDbController {
 				${this.tableName}.cached_time > NOW() - INTERVAL ${ttl} MINUTE
 		`;
 
-		console.log("SQL ::", sql);
+		// console.log("SQL ::", sql);
 
 		return new Promise((resolve, reject) => {
 			return this.db.dbQuery(sql).then(res => {
