@@ -5,9 +5,9 @@
  */
 
 import * as Scaledrone            from 'scaledrone-node';
-import {MessagePipes} from '@channels/channel-config';
-import {ChannelEvents} from '@channels/channel-events';
-import {Logger} from '@cli/logger';
+import { MessagePipes }           from '@channels/channel-config';
+import { Logger }                 from '@cli/logger';
+import { DroneEvents }            from '@channels/drone-events';
 
 this.serviceDrone = new Scaledrone("T4eUrfAVDy7ODb0h"); // Service Channel
 let serviceChannel = this.serviceDrone.subscribe(MessagePipes.Service);
@@ -24,7 +24,7 @@ this.serviceDrone.on("data", data => {
 	console.log("DATA ::", data);
 });
 
-serviceChannel.on(ChannelEvents.ChannelOpen, error => {
+serviceChannel.on(DroneEvents.Open, error => {
 
 	if (error) {
 		Logger.logError("Error :: serviceChannel ::", error);
@@ -45,7 +45,7 @@ serviceChannel.on(ChannelEvents.ChannelOpen, error => {
 	this.serviceDrone.publish({room: MessagePipes.Service, message: message});
 });
 
-serviceChannel.on(ChannelEvents.ChannelData, data => {
+serviceChannel.on(DroneEvents.Data, data => {
 	console.log("DATA ::", data);
 	console.log("NAME ::", this.apiClient.name);
 });

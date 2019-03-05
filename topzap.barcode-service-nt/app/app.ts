@@ -17,7 +17,8 @@ import { MomoxAppApi }            from '@api-clients/momox/momox-api-client';
 import { MmpAppApi }              from '@api-clients/musicmagpie/mmp-api-client';
 import { ZiffitAppApi }           from '@api-clients/ziffit/ziffit-api-client';
 import { WbgAppApi }              from '@api-clients/webuygames/wbg-api-client';
-import { ChannelEvents }          from '@channels/channel-events';
+import {DroneEvents} from '@channels/drone-events';
+import {ScaledroneClient} from '@channels/scaledrone-client';
 
 export class Application {
 	serviceChannel: IChannel;
@@ -49,6 +50,15 @@ export class Application {
 			process.exit(220);
 		}
 
+		let testDrone = new ScaledroneClient(ChannelNames.BidsTest);
+		let channel = testDrone.subscribe(MessagePipes.GetBid);
+
+
+
+
+
+
+
 		this.serviceChannel = new Channel(ChannelNames.Service, MessagePipes.Service);
 
 		this.serviceChannel.onChannelOpen((data) => {
@@ -69,7 +79,7 @@ export class Application {
 			name: "kalle"
 		};
 
-		serviceChannel.on(ChannelEvents.ChannelOpen, error => {
+		serviceChannel.on(DroneEvents.Open, error => {
 
 			if (error) {
 				Logger.logError("Error :: serviceChannel ::", error);

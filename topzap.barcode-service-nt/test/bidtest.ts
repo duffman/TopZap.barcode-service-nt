@@ -7,11 +7,11 @@
 import * as Scaledrone            from 'scaledrone-node';
 import { MomoxAppApi }            from '@api-clients/momox/momox-api-client';
 import { BidService }             from '@app/services/bid.service';
-import {ChannelIds, ChannelNames} from '@channels/channel-config';
+import { ChannelNames }           from '@channels/channel-config';
 import { MessagePipes}            from '@channels/channel-config';
-import { ChannelEvents }          from '@channels/channel-events';
+import { DroneEvents }            from '@channels/drone-events';
 
-let drone =  new Scaledrone(ChannelIds.Bids);
+let drone =  new Scaledrone(ChannelNames.Bids);
 this.channel = drone.subscribe(MessagePipes.NewBid);
 
 drone.on("open", (err) => {
@@ -24,7 +24,7 @@ drone.on("data", data => {
 });
 
 
-this.channel.on(ChannelEvents.ChannelData, data => {
+this.channel.on(DroneEvents.Data, data => {
 	console.log("CHANNEL DATA ::", data);
 });
 

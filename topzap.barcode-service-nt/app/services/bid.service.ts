@@ -5,22 +5,27 @@
  */
 
 import * as Scaledrone            from 'scaledrone-node';
-import { ChannelEvents }          from '@channels/channel-events';
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
 import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
+import { IVendorApiClient }       from '@app/vendor-api-client';
 import { IChannel }               from '@channels/channel';
-import {ChannelIds, ChannelNames, MessagePipes} from '@channels/channel-config';
 import { PStrUtils }              from '@putte/pstr-utils';
 import { IChannelMessage }        from '@channels/channel-message';
 import { ChannelMessage }         from '@channels/channel-message';
 import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-message-types';
 import { Logger }                 from '@cli/logger';
 import { BidCacheDb }             from '@app/database/bid-cache-db';
-import { IVendorApiClient }       from '@app/vendor-api-client';
+
+import { ChannelNames }           from '@channels/channel-config';
+import { ChannelConfig }          from '@channels/channel-config';
+import { MessagePipes }           from '@channels/channel-config';
+import { DroneEvents }            from '@channels/drone-events';
 
 export interface IBidService {
 	callVendorService(code: string): Promise<IVendorOfferData>;
 }
+
+const TEST_MODE = true;
 
 export class BidService implements IBidService{
 	bidCacheDb: BidCacheDb;
@@ -37,18 +42,54 @@ export class BidService implements IBidService{
 			this.onGetBidRequest(data);
 		});
 		*/
+
 		this.bidCacheDb = new BidCacheDb();
 
-		console.log("Bid Channel ::", ChannelIds.Bids);
+		let channelId = TEST_MODE ?
+			ChannelConfig.getChannelId(ChannelNames.BidsTest) :
+			ChannelConfig.getChannelId(ChannelNames.Bids);
 
-		this.drone = new Scaledrone(ChannelIds.Bids);
+		console.log("Bid Channel ::", channelId);
+
+		this.drone = new Scaledrone(channelId);
 		this.channel = this.drone.subscribe(MessagePipes.GetBid);
 
-		this.drone.on("open", (err) => {
-			console.log("Drone OPEN");
+		this.drone.on(DroneEvents.Open, (err) => {
+			console.log("Drone OPEN ::", err);
 		});
 
-		this.channel.on(ChannelEvents.ChannelData, data => {
+		this.drone.on(DroneEvents.Close, () => {
+			console.log("Drone ::", DroneEvents.Close);
+		});
+
+		this.drone.on(DroneEvents.Error, (err) => {
+			console.log("Drone :: ERR ::", err);
+		});
+
+		this.drone.on(DroneEvents.Reconnect, () => {
+			console.log("Drone ::", DroneEvents.Reconnect);
+		});
+
+		// -- //
+
+		this.channel.on(DroneEvents.Open, err => {
+			console.log("Channel :: OPEN ::", err);
+		});
+
+		this.channel.on(DroneEvents.Close, () => {
+			console.log("Channel :: CLOSE");
+		});
+
+		this.channel.on(DroneEvents.Reconnect, () => {
+			console.log("Channel ::", DroneEvents.Reconnect);
+		});
+
+		this.channel.on(DroneEvents.Error, err => {
+			console.log("Channel :: ERR ::", err);
+		});
+
+		this.channel.on(DroneEvents.Data, data => {
+			console.log("Channel :: DATA ::", data);
 			this.onGetBidRequest(data);
 		});
 	}
@@ -86,8 +127,17 @@ export class BidService implements IBidService{
 	public onGetBidRequest(message: any): void {
 		console.log("ON NEW BID ---->");
 		let channelMess = message as IChannelMessage;
-		let code: string = channelMess.data.code;
-		let sessId: string = channelMess.sessId;
+
+		let code: string = "";
+		let sessId: string = "";
+
+		try {
+			code = channelMess.data.code;
+			sessId = channelMess.sessId;
+
+		} catch (ex) {
+			console.log("Error extracting data ::", ex);
+		}
 
 		console.log("BidChannelService :: CODE ::", code);
 		console.log("BidChannelService :: SESSION ::", sessId);
@@ -106,7 +156,7 @@ export class BidService implements IBidService{
 		let scope = this;
 
 		async function execute(): Promise<void> {
-			let cachedVendorOffer = await scope.bidCacheDb.getVendorOffer(code, scope.apiClient.vendorId, 10);
+			let cachedVendorOffer = await scope.bidCacheDb.getVendorOffer(code, scope.apiClient.vendorId);
 
 			// Do we have chached results we are supposed to use?
 			if (cachedVendorOffer) {
@@ -148,19 +198,13 @@ export class BidService implements IBidService{
 	 */
 	private emitChannelBid(code: string, sessId: string, data: IVendorOfferData): void {
 		let messData = new ChannelMessage(ZapMessageType.VendorOffer, data, sessId);
-		console.log("Emitting message ::", JSON.stringify(messData));
+		console.log("Prepping message ::", JSON.stringify(messData));
 
-		this.drone.on("open", (err) => {
-			this.drone.publish(
-				{room: MessagePipes.NewBid, message: messData }
-			);
-		});
-
-		/*
 		this.drone.publish(
 			{room: MessagePipes.NewBid, message: messData }
 		);
-		*/
+
+//		this.drone.on("open", (err) => {});
 	}
 
 	public callVendorService(code: string): Promise<IVendorOfferData> {
