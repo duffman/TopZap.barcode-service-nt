@@ -14,3 +14,6 @@ if (!CliCommander.haveArgs()) {
 	let param = CliCommander.first();
 	let app = new Application(true, param);
 }
+
+
+

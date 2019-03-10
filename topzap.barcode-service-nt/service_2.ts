@@ -4,8 +4,8 @@
  * Proprietary and confidential
  */
 
-import { Logger } from '@cli/logger';
-import { Application } from '@app/app';
+import { Logger }                 from '@cli/logger';
+import { Application }            from '@app/app';
 
 let serviceName = "Music Magpie";
 let serviceKey = "mmp";

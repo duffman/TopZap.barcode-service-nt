@@ -66,6 +66,10 @@ export class BidService implements IBidService{
 			console.log("Drone :: ERR ::", err);
 		});
 
+		this.drone.on(DroneEvents.Disconnect, () => {
+			console.log("Drone ::", DroneEvents.Disconnect);
+		});
+
 		this.drone.on(DroneEvents.Reconnect, () => {
 			console.log("Drone ::", DroneEvents.Reconnect);
 		});
@@ -82,6 +86,10 @@ export class BidService implements IBidService{
 
 		this.channel.on(DroneEvents.Reconnect, () => {
 			console.log("Channel ::", DroneEvents.Reconnect);
+		});
+
+		this.channel.on(DroneEvents.Disconnect, () => {
+			console.log("Channel ::", DroneEvents.Disconnect);
 		});
 
 		this.channel.on(DroneEvents.Error, err => {

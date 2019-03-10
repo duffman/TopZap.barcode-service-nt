@@ -10,15 +10,15 @@ import { Constants }              from "@inc/constants";
 import { IChannel }               from '@channels/channel';
 import { Channel }                from '@channels/channel';
 import { ChannelNames }           from '@channels/channel-config';
-import { MessagePipes}            from '@channels/channel-config';
 import { IBidService }            from '@app/services/bid.service';
 import { BidService }             from '@app/services/bid.service';
+
 import { MomoxAppApi }            from '@api-clients/momox/momox-api-client';
 import { MmpAppApi }              from '@api-clients/musicmagpie/mmp-api-client';
 import { ZiffitAppApi }           from '@api-clients/ziffit/ziffit-api-client';
 import { WbgAppApi }              from '@api-clients/webuygames/wbg-api-client';
-import {DroneEvents} from '@channels/drone-events';
-import {ScaledroneClient} from '@channels/scaledrone-client';
+import { DroneEvents }            from '@channels/drone-events';
+import { ScaledroneClient }       from '@channels/scaledrone-client';
 
 export class Application {
 	serviceChannel: IChannel;
@@ -52,11 +52,6 @@ export class Application {
 
 		let testDrone = new ScaledroneClient(ChannelNames.BidsTest);
 		let channel = testDrone.subscribe(MessagePipes.GetBid);
-
-
-
-
-
 
 
 		this.serviceChannel = new Channel(ChannelNames.Service, MessagePipes.Service);
