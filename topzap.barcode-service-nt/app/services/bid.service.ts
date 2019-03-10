@@ -4,22 +4,18 @@
  * Proprietary and confidential
  */
 
-import * as Scaledrone            from 'scaledrone-node';
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
-import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
 import { IVendorApiClient }       from '@app/vendor-api-client';
-import { IChannel }               from '@channels/channel';
 import { PStrUtils }              from '@putte/pstr-utils';
-import { IChannelMessage }        from '@channels/channel-message';
-import { ChannelMessage }         from '@channels/channel-message';
 import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-message-types';
 import { Logger }                 from '@cli/logger';
 import { BidCacheDb }             from '@app/database/bid-cache-db';
-
-import { ChannelNames }           from '@channels/channel-config';
-import { ChannelConfig }          from '@channels/channel-config';
-import { MessagePipes }           from '@channels/channel-config';
-import { DroneEvents }            from '@channels/drone-events';
+import { DroneServer }            from "@app/zapdrone/drone-server";
+import { DroneClient }            from "@app/zapdrone/drone-client";
+import { IDroneMessage }          from "@app/zapdrone/drone-message";
+import { DroneMessage }           from "@app/zapdrone/drone-message";
+import { DroneChannels }          from "@app/zapdrone/drone-channels";
+import { DroneEvent }             from "@app/zapdrone/drone-event";
 
 export interface IBidService {
 	callVendorService(code: string): Promise<IVendorOfferData>;
@@ -27,82 +23,30 @@ export interface IBidService {
 
 const TEST_MODE = true;
 
-export class BidService implements IBidService{
+export class BidService implements IBidService {
 	bidCacheDb: BidCacheDb;
 	drone: any;
 	channel: any;
-	serviceDrone: any;
-	bidsChannel: IChannel;
 
-	constructor(public apiClient: IVendorApiClient) {
-		/*
-		this.bidsChannel = new Channel(ChannelNames.Bids, MessagePipes.GetBid);
-		this.bidsChannel.onChannelData((data) => {
-			console.log("CHANNEL 2 :: bidsChannel ::", data);
-			this.onGetBidRequest(data);
-		});
-		*/
+	droneServer: DroneServer;
+	droneClient: DroneClient;
 
+//	serviceDrone: any;
+//	bidsChannel: IChannel;
+
+	constructor (public apiClient: IVendorApiClient) {
 		this.bidCacheDb = new BidCacheDb();
 
-		let channelId = TEST_MODE ?
-			ChannelConfig.getChannelId(ChannelNames.BidsTest) :
-			ChannelConfig.getChannelId(ChannelNames.Bids);
+		this.droneClient = new DroneClient();
+		this.droneServer = new DroneServer();
 
-		console.log("Bid Channel ::", channelId);
-
-		this.drone = new Scaledrone(channelId);
-		this.channel = this.drone.subscribe(MessagePipes.GetBid);
-
-		this.drone.on(DroneEvents.Open, (err) => {
-			console.log("Drone OPEN ::", err);
-		});
-
-		this.drone.on(DroneEvents.Close, () => {
-			console.log("Drone ::", DroneEvents.Close);
-		});
-
-		this.drone.on(DroneEvents.Error, (err) => {
-			console.log("Drone :: ERR ::", err);
-		});
-
-		this.drone.on(DroneEvents.Disconnect, () => {
-			console.log("Drone ::", DroneEvents.Disconnect);
-		});
-
-		this.drone.on(DroneEvents.Reconnect, () => {
-			console.log("Drone ::", DroneEvents.Reconnect);
-		});
-
-		// -- //
-
-		this.channel.on(DroneEvents.Open, err => {
-			console.log("Channel :: OPEN ::", err);
-		});
-
-		this.channel.on(DroneEvents.Close, () => {
-			console.log("Channel :: CLOSE");
-		});
-
-		this.channel.on(DroneEvents.Reconnect, () => {
-			console.log("Channel ::", DroneEvents.Reconnect);
-		});
-
-		this.channel.on(DroneEvents.Disconnect, () => {
-			console.log("Channel ::", DroneEvents.Disconnect);
-		});
-
-		this.channel.on(DroneEvents.Error, err => {
-			console.log("Channel :: ERR ::", err);
-		});
-
-		this.channel.on(DroneEvents.Data, data => {
+		this.droneClient.onGetBid((data) => {
 			console.log("Channel :: DATA ::", data);
 			this.onGetBidRequest(data);
 		});
 	}
 
-	private formatOffer(input: string): number {
+	private formatOffer (input: string): number {
 		let res = -1;
 
 		try {
@@ -117,24 +61,9 @@ export class BidService implements IBidService{
 		return res;
 	}
 
-	private emitGetOffersInit(sessId: string, data: any): void {
-		let mess = new ChannelMessage(ZapMessageType.GetOffersInit, data, sessId);
-		this.bidsChannel.emitMessage(mess, sessId);
-	}
-
-	private emitVendorOffer(sessId: string, data: any): void {
-		let mess = new ChannelMessage(ZapMessageType.VendorOffer, data, sessId);
-		this.bidsChannel.emitMessage(mess, sessId);
-	}
-
-	private emitOffersDone(sessId: string): void {
-		let mess = new ChannelMessage(ZapMessageType.GetOffersDone, {}, sessId);
-		this.bidsChannel.emitMessage(mess, sessId);
-	}
-
-	public onGetBidRequest(message: any): void {
+	public onGetBidRequest (message: any): void {
 		console.log("ON NEW BID ---->");
-		let channelMess = message as IChannelMessage;
+		let channelMess = message as IDroneMessage;
 
 		let code: string = "";
 		let sessId: string = "";
@@ -160,10 +89,10 @@ export class BidService implements IBidService{
 		this.executeRequest(code, sessId);
 	}
 
-	public executeRequest(code: string, sessId: string): void {
+	public executeRequest (code: string, sessId: string): void {
 		let scope = this;
 
-		async function execute(): Promise<void> {
+		async function execute (): Promise<void> {
 			let cachedVendorOffer = await scope.bidCacheDb.getVendorOffer(code, scope.apiClient.vendorId);
 
 			// Do we have chached results we are supposed to use?
@@ -181,7 +110,7 @@ export class BidService implements IBidService{
 		});
 	}
 
-	public doCallVendorService(code: string, sessId: string): void {
+	public doCallVendorService (code: string, sessId: string): void {
 		this.callVendorService(code).then((data: any) => {
 			console.log("doCallVendorService :: ", data);
 			this.emitChannelBid(code, sessId, data);
@@ -204,18 +133,14 @@ export class BidService implements IBidService{
 	 * @param {string} sessId
 	 * @param {IVendorOfferResult} offer
 	 */
-	private emitChannelBid(code: string, sessId: string, data: IVendorOfferData): void {
-		let messData = new ChannelMessage(ZapMessageType.VendorOffer, data, sessId);
+	private emitChannelBid (code: string, sessId: string, data: IVendorOfferData): void {
+		let messData = new DroneMessage(ZapMessageType.VendorOffer, data, sessId);
 		console.log("Prepping message ::", JSON.stringify(messData));
 
-		this.drone.publish(
-			{room: MessagePipes.NewBid, message: messData }
-		);
-
-//		this.drone.on("open", (err) => {});
+		this.droneServer.emitToChannel(DroneChannels.Bids, DroneEvent.NewBid, messData);
 	}
 
-	public callVendorService(code: string): Promise<IVendorOfferData> {
+	public callVendorService (code: string): Promise<IVendorOfferData> {
 		console.log("callVendorService ::", code);
 
 		let scope = this;
@@ -240,32 +165,4 @@ export class BidService implements IBidService{
 			});
 		});
 	}
-
-	/*
-	public callVendorService(code: string): Promise<IVendorOfferData> {
-		console.log("callVendorService ::", code);
-
-		let scope = this;
-		let result: IVendorOfferData = null;
-
-		return new Promise((resolve, reject) => {
-			this.apiClient.getOffer(code).then((res) => {
-				if (res.offer !== null) {
-					let offerNum = scope.formatOffer(res.offer);
-					res.accepted = offerNum > -1;
-					res.offer = offerNum.toString();
-
-					// Append the code to the result
-					res.code = code;
-				}
-
-				resolve(res);
-
-			}).catch((err) => {
-				console.log("getOffer :: ERR", err);
-				reject(err);
-			});
-		});
-	}
-	*/
 }

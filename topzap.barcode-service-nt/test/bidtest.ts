@@ -5,7 +5,7 @@
  */
 
 import * as Scaledrone            from 'scaledrone-node';
-import { MomoxAppApi }            from '@api-clients/momox/momox-api-client';
+import { MomoxAppApi }            from '@api-clients/momox/momox-api-server';
 import { BidService }             from '@app/services/bid.service';
 import { ChannelNames }           from '@channels/channel-config';
 import { MessagePipes}            from '@channels/channel-config';

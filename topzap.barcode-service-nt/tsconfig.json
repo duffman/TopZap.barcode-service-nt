@@ -1,30 +1,40 @@
 {
   "compilerOptions": {
-    "types": ["reflect-metadata", "node"],
-    "moduleResolution": "node",
+    "lib": ["es6", "dom" ],
+    "types": ["node", "reflect-metadata", "inversify"],
     "module": "commonjs",
     "target": "ESNEXT",
     "noImplicitAny": false,
     "sourceMap": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@channels/*": ["./app/channels.git/*"],
-      "@webapp/*": ["./app/webapp/*"],
+      "@root/*": ["./*"],
       "@app/*": ["./app/*"],
-      "@api-clients/*": ["./api-clients/*"],
+      "@api/*": ["./app/api/*"],
+      "@components/*": ["./app/components/*"],
+
+      "@pubsub/*": ["./app/pubsub/*"],
+      "@scaledrone/*": ["./app/pubsub/scaledrone-service/*"],
+      "@zapdrone/*": ["./app/pubsub/zapdrone-service/*"],
+
+      "@core/*": ["./app/core/*"],
       "@cli/*": ["./app/cli/*"],
       "@lib/*": ["./lib/*"],
-      "@putte/*": ["./lib/putte-ts/*"],
-      "@inc/*": ["./inc/*"],
-      "@utils/*": ["./lib/utils/*"]
+      "@db/*": ["./database/*"],
+
+      "@zapModels/*": ["./app/zap-ts-models/*"],
+      "@models/*": ["./app/models/*"],
+      "@putteDb/*": ["./lib/dbcore/*"],
+      "@utils/*": ["./lib/utils/*"],
+      "@putte/*": ["./lib/node-tsutils/*"],
+      "@zaplib/*": ["./lib/topzap-utils-lib/*"]
     }
   },
   "exclude": [
-    "dist",
-    "crap",
+    "test",
     "node_modules"
   ]
 }

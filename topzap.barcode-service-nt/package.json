@@ -1,5 +1,6 @@
 {
   "name": "topzap.price-service-api",
+  "types": ["node"],
   "version": "1.5.2",
   "description": "",
   "main": "index.js",
@@ -8,7 +9,6 @@
     "mmp": "node ./dist/main.js mmp",
     "ziffit": "node ./dist/main.js ziffit",
     "wbg": "node ./dist/main.js wbg",
-
     "brun": "tspath --force --preproc=\"tsc\" && npm start",
     "start": "node ./dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,15 +16,20 @@
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
-  "devDependencies": {},
+  "devDependencies": {
+  },
   "dependencies": {
-    "@types/node": "^10.12.24",
+    "@types/node": "^10.12.30"
+    "@types/request": "^2.48.1",
     "chalk": "^2.4.1",
+    "inversify": "^5.0.1",
     "mysql": "^2.16.0",
+    "pusher": "^2.2.0",
+    "pusher-client": "^1.1.0",
     "reflect-metadata": "^0.1.12",
     "request": "^2.88.0",
-    "scaledrone-node": "^1.4.0",
     "simplediff": "^0.1.1",
+    "typescript": "^3.3.3333",
     "uuid": "^3.3.2"
   }
 }

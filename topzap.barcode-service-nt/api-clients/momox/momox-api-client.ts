@@ -4,8 +4,9 @@
  * Proprietary and confidential
  */
 
+const request = require('request');
 import { IVendorApiClient }       from '@app/vendor-api-client';
-import * as request               from "request";
+//import * as request               from "request";
 import { MomoxMobileWorker}       from "./momox-app-worker";
 import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
 import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';

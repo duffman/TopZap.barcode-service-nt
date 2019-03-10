@@ -24,12 +24,10 @@ export module Settings {
 	 *	Public Application Settings
 	 */
 	export module Database {
-		export module MySQL {
-			export const dbName = "topzap-prod";
-			export const dbHost = "localhost";
-			export const dbUser = "duffman";
-			export const dbPass = "bjoe7151212";
-		}
+		export const dbName = "topzap-prod";
+		export const dbHost = "localhost";
+		export const dbUser = "duffman";
+		export const dbPass = "bjoe7151212";
 	}
 
 	export class Endpoints {
