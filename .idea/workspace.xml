@@ -5,13 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/channels.git" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-db" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/lib/putte-ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/app.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/app/services/bid.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/app.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid.service.js" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/dist/app/services/bid.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/main.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topzap.barcode-service-nt/service_2.ts" afterPath="$PROJECT_DIR$/topzap.barcode-service-nt/service_2.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -290,7 +283,7 @@
     <property name="settings.editor.splitter.proportion" value="0.26862124" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Projects/pj-parcel/server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../barcode-service-pusher/topzap.barcode-service-nt" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
@@ -322,16 +315,15 @@
       <option name="presentableId" value="Default" />
       <updated>1550774632463</updated>
       <workItem from="1550774633669" duration="39874000" />
-      <workItem from="1551732583980" duration="12005000" />
+      <workItem from="1551732583980" duration="12051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51879000" />
+    <option name="totallyTimeSpent" value="51925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="640" y="77" width="1888" height="1014" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24660511" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

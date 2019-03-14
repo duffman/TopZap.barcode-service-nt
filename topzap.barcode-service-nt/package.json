@@ -8,7 +8,6 @@
     "mmp": "node ./dist/main.js mmp",
     "ziffit": "node ./dist/main.js ziffit",
     "wbg": "node ./dist/main.js wbg",
-
     "brun": "tspath --force --preproc=\"tsc\" && npm start",
     "start": "node ./dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,11 +18,12 @@
   "devDependencies": {},
   "dependencies": {
     "@types/node": "^10.12.24",
+    "@types/pubnub": "^4.0.5",
     "chalk": "^2.4.1",
     "mysql": "^2.16.0",
+    "pubnub": "^4.21.7",
     "reflect-metadata": "^0.1.12",
     "request": "^2.88.0",
-    "scaledrone-node": "^1.4.0",
     "simplediff": "^0.1.1",
     "uuid": "^3.3.2"
   }

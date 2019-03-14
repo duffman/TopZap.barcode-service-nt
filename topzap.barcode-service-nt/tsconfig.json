@@ -11,7 +11,7 @@
     "outDir": "dist",
     "baseUrl": "./",
     "paths": {
-      "@channels/*": ["./app/channels.git/*"],
+      "@pubsub/*": ["./lib/topzap.pubsub-lib.git/*"],
       "@webapp/*": ["./app/webapp/*"],
       "@app/*": ["./app/*"],
       "@api-clients/*": ["./api-clients/*"],

@@ -7,3 +7,6 @@
 [submodule "topzap.barcode-service-nt/lib/putte-ts"]
 	path = topzap.barcode-service-nt/lib/putte-ts
 	url = https://github.com/duffman/putte-tsnode-lib.git
+[submodule "topzap.barcode-service-nt/lib/topzap.pubsub-lib.git"]
+	path = topzap.barcode-service-nt/lib/topzap.pubsub-lib.git
+	url = https://github.com/duffman/topzap.pubsub-lib.git
