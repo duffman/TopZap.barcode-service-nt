@@ -20,6 +20,7 @@
     "@types/node": "^10.12.24",
     "@types/pubnub": "^4.0.5",
     "chalk": "^2.4.1",
+    "inversify": "^5.0.1",
     "mysql": "^2.16.0",
     "pubnub": "^4.21.7",
     "reflect-metadata": "^0.1.12",

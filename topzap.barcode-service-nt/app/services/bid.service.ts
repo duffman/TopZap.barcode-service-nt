@@ -12,10 +12,11 @@ import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-m
 import { Logger }                 from '@cli/logger';
 import { BidCacheDb }             from '@app/database/bid-cache-db';
 import { PubsubService }          from '@pubsub/pubsub-service';
-import { PubsubMessage }          from '@pubsub/pubsub-message';
+import {IPubsubPayload, PubsubMessage, PubsubPayload} from '@pubsub/pubsub-message';
 import { IPubsubMessage }         from '@pubsub/pubsub-message';
 import { MessageTypes }           from '@pubsub/pubsub-message';
-import { Channels }               from '@pubsub/publub-channels';
+import { Channels }               from '@pubsub/pubsub-channels';
+import {PBService, ServiceType} from '@pubsub/pubsub-types';
 
 export interface IBidService {
 	callVendorService(code: string): Promise<IVendorOfferData>;
@@ -29,10 +30,32 @@ export class BidService implements IBidService{
 
 	constructor(public apiClient: IVendorApiClient) {
 		this.bidCacheDb = new BidCacheDb();
-		this.pubsub = new PubsubService(true);
-		this.pubsub.subscribe([Channels.GetBidChannel]);
+		this.pubsub = new PubsubService();
 
-		this.registerService();
+		let channels = [
+					Channels.GetBidChannel,
+					Channels.ServiceChannel,
+					Channels.RequestHello
+				];
+		this.pubsub.subscribe(channels);
+
+		this.sayHello();
+
+		//
+		// We are requested to say hello
+		//
+		this.pubsub.onRequestHello((msg: IPubsubPayload) => {
+			Logger.logPurple(">> onRequestHello ::", msg);
+
+			// Check that this is the requested service
+			if (msg.type === ServiceType.VendorPriceService) {
+				this.sayHello();
+			}
+		});
+
+		this.pubsub.onServiceMessage((msg: IPubsubMessage) => {
+			Logger.logPurple("** SERVICE MESSAGE ::", msg);
+		});
 
 		this.pubsub.onGetBidRequest((msg: IPubsubMessage) => {
 			console.log("BIDS MESSAGE ::", msg);
@@ -45,8 +68,13 @@ export class BidService implements IBidService{
 		});
 	}
 
-	private registerService(): void {
-
+	private sayHello(): void {
+		let payload = new  PBService(ServiceType.VendorPriceService, this.apiClient.vendorId);
+		this.pubsub.publish(Channels.ServiceHello, payload).then(res => {
+			Logger.logPurple("sayHello ::", payload);
+		}).catch(err => {
+			Logger.logError("sayHello :: err ::", err);
+		});
 	}
 
 	private formatOffer(input: string): number {
