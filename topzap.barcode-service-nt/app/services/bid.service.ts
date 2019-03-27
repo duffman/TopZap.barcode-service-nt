@@ -11,12 +11,15 @@ import { PStrUtils }              from '@putte/pstr-utils';
 import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-message-types';
 import { Logger }                 from '@cli/logger';
 import { BidCacheDb }             from '@app/database/bid-cache-db';
-import { PubsubService }          from '@pubsub/pubsub-service';
-import {IPubsubPayload, PubsubMessage, PubsubPayload} from '@pubsub/pubsub-message';
+import { IPubsubPayload }         from '@pubsub/pubsub-message';
+import { PubsubMessage }          from '@pubsub/pubsub-message';
+import { PubsubPayload }          from '@pubsub/pubsub-message';
 import { IPubsubMessage }         from '@pubsub/pubsub-message';
 import { MessageTypes }           from '@pubsub/pubsub-message';
 import { Channels }               from '@pubsub/pubsub-channels';
-import {PBService, ServiceType} from '@pubsub/pubsub-types';
+import { PBService }              from '@pubsub/pubsub-types';
+import { ServiceType }            from '@pubsub/pubsub-types';
+import { PubsubCore }             from '@pubsub/pubsub-core';
 
 export interface IBidService {
 	callVendorService(code: string): Promise<IVendorOfferData>;
@@ -26,11 +29,11 @@ const TEST_MODE = true;
 
 export class BidService implements IBidService{
 	bidCacheDb: BidCacheDb;
-	pubsub: PubsubService;
+	pubsub: PubsubCore;
 
 	constructor(public apiClient: IVendorApiClient) {
 		this.bidCacheDb = new BidCacheDb();
-		this.pubsub = new PubsubService();
+		this.pubsub = new PubsubCore();
 
 		let channels = [
 					Channels.GetBidChannel,
