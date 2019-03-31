@@ -4,22 +4,19 @@
  * Proprietary and confidential
  */
 
-import { IVendorOfferData }       from '@app/models/zap-ts-models/zap-offer.model';
-import { VendorOfferData }        from '@app/models/zap-ts-models/zap-offer.model';
-import { IVendorApiClient }       from '@app/vendor-api-client';
-import { PStrUtils }              from '@putte/pstr-utils';
-import { ZapMessageType}          from '@app/models/zap-ts-models/messages/zap-message-types';
-import { Logger }                 from '@cli/logger';
+import { IVendorOfferData }       from '@models/zap-ts-models/zap-offer.model';
 import { BidCacheDb }             from '@app/database/bid-cache-db';
-import { IPubsubPayload }         from '@pubsub/pubsub-message';
-import { PubsubMessage }          from '@pubsub/pubsub-message';
-import { PubsubPayload }          from '@pubsub/pubsub-message';
-import { IPubsubMessage }         from '@pubsub/pubsub-message';
-import { MessageTypes }           from '@pubsub/pubsub-message';
+import { IVendorApiClient }       from '@app/vendor-api-client';
+import { PubsubCore }             from '@pubsub/pubsub-core';
 import { Channels }               from '@pubsub/pubsub-channels';
+import {IPubsubMessage, IPubsubPayload} from '@pubsub/pubsub-message';
+import { PubsubMessage }          from '@pubsub/pubsub-message';
+import { MessageTypes }           from '@pubsub/pubsub-message';
+import { Logger }                 from '@cli/logger';
 import { PBService }              from '@pubsub/pubsub-types';
 import { ServiceType }            from '@pubsub/pubsub-types';
-import { PubsubCore }             from '@pubsub/pubsub-core';
+import { PStrUtils }              from '@lib/putte-ts/pstr-utils';
+import { ZapMessageType }         from '@models/zap-ts-models/messages/zap-message-types';
 
 export interface IBidService {
 	callVendorService(code: string): Promise<IVendorOfferData>;
@@ -27,7 +24,7 @@ export interface IBidService {
 
 const TEST_MODE = true;
 
-export class BidService implements IBidService{
+export class BidService implements IBidService {
 	bidCacheDb: BidCacheDb;
 	pubsub: PubsubCore;
 
@@ -40,8 +37,8 @@ export class BidService implements IBidService{
 					Channels.ServiceChannel,
 					Channels.RequestHello
 				];
-		this.pubsub.subscribe(channels);
 
+		this.pubsub.subscribe(channels);
 		this.sayHello();
 
 		//
@@ -72,15 +69,15 @@ export class BidService implements IBidService{
 	}
 
 	private sayHello(): void {
-		let payload = new  PBService(ServiceType.VendorPriceService, this.apiClient.vendorId);
+		let payload = new PBService(ServiceType.VendorPriceService, this.apiClient.vendorId);
 		this.pubsub.publish(Channels.ServiceHello, payload).then(res => {
 			Logger.logPurple("sayHello ::", payload);
 		}).catch(err => {
 			Logger.logError("sayHello :: err ::", err);
-		});
+		})
 	}
 
-	private formatOffer(input: string): number {
+	private formatOffer (input: string): number {
 		let res = -1;
 
 		try {
@@ -126,7 +123,7 @@ export class BidService implements IBidService{
 	public executeRequest(code: string, sessId: string): void {
 		let scope = this;
 
-		async function execute(): Promise<void> {
+		async function execute (): Promise<void> {
 			let cachedVendorOffer = await scope.bidCacheDb.getVendorOffer(code, scope.apiClient.vendorId);
 
 			// Do we have chached results we are supposed to use?
@@ -173,7 +170,7 @@ export class BidService implements IBidService{
 		this.pubsub.emitNewBidMessage(messData, sessId);
 	}
 
-	public callVendorService(code: string): Promise<IVendorOfferData> {
+	public callVendorService (code: string): Promise<IVendorOfferData> {
 		console.log("callVendorService ::", code);
 
 		let scope = this;

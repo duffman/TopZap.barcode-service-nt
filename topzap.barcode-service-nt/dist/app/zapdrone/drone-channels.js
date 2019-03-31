@@ -1,0 +1,1 @@
+'use strict';Object.defineProperty(exports,'__esModule',{value:true});var DroneChannels;(function(DroneChannels){DroneChannels.Data='data';DroneChannels.Bids='bids';DroneChannels.Basket='basket';DroneChannels.Service='service';}(DroneChannels=exports.DroneChannels||(exports.DroneChannels={})));

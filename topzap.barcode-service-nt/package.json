@@ -1,5 +1,6 @@
 {
   "name": "topzap.price-service-api",
+  "types": ["node"],
   "version": "1.5.2",
   "description": "",
   "main": "index.js",
@@ -15,10 +16,11 @@
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "^10.12.24",
-    "@types/pubnub": "^4.0.5",
+    "@types/pubnub": "^4.0.5"
+  },
+  "dependencies": {
     "chalk": "^2.4.1",
     "inversify": "^5.0.1",
     "mysql": "^2.16.0",
@@ -26,6 +28,7 @@
     "reflect-metadata": "^0.1.12",
     "request": "^2.88.0",
     "simplediff": "^0.1.1",
+    "typescript": "^3.3.3333",
     "uuid": "^3.3.2"
   }
 }

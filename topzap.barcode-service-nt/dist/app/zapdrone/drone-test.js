@@ -1,0 +1,1 @@
+'use strict';var drone_config_1=require('./drone-config');var Pusher=require('pusher-client');var pusher=new Pusher(drone_config_1.DroneConfig.Development.key,{cluster:'eu'});var order_book_channel=pusher.subscribe('getBid');order_book_channel.bind('data',function(data){console.log(data);});
